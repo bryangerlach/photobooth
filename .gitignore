@@ -1,0 +1,8 @@
+*.bat
+pics/*
+prints/*
+venv
+*.lnk
+.env
+footers/*
+Thumbs.db
