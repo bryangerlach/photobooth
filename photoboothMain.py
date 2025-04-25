@@ -8,6 +8,8 @@
 #########################################################################################
 
 import sys
+import os
+os.environ["OPENCV_VIDEOIO_MSMF_ENABLE_HW_TRANSFORMS"] = "0"
 import cv2  # For webcam access
 from PIL import Image, ImageDraw, ImageEnhance, ImageWin
 import pygame
@@ -19,7 +21,6 @@ import win32print
 import win32ui
 import ftplib
 import qrcode
-import os
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -32,6 +33,26 @@ pygame.init()
 
 beep = pygame.mixer.Sound("beep.ogg")
 camsound = pygame.mixer.Sound("camera.ogg")
+
+
+# index = 0
+# cameras = []
+# while True:
+#     cap = cv2.VideoCapture(index)
+#     if not cap.read()[0]:
+#         break
+#     else:
+#         cameras.append(index)
+#     cap.release()
+#     index += 1
+# available_cameras = cameras
+
+# if not available_cameras:
+#     print("No cameras found.")
+
+# print("Available cameras:")
+# for i, camera_index in enumerate(available_cameras):
+#     print(f"{i + 1}: Camera {camera_index}")
 
 cap = cv2.VideoCapture(0)  # 0 usually represents the default webcam
 if not cap.isOpened():
@@ -202,7 +223,7 @@ def countdown():
             #### done uploading###########################################################################################
             finishedimage = photos
             ##### print photo ########################################################################################
-            #printPhoto(location)
+            printPhoto(location)
             ###########################################################################################################
             # qrimage = qrcode.make(f"http://gerlachwedding.com/gallery/photos/photobooth/strips/{actualfilename}")
             # qrimage.save("qrcode.jpg", "JPEG")
